@@ -8,23 +8,18 @@
         <ul class="prompt js-output"></ul>
 
         <script class="js-item-template" type="text/x-handlebars-template">
-            <li>
-                <table>
-                    <tr>
-                        <td>
-                            <span class="sender">{{sender}}:</span>
-                            <span class="timestamp">[18-02-2016]</span>
-                            <span class="symbol">$ </span>
-                        </td>
-                        <td>
-                            <span class="msg msg--info">Info </span>
-                            <span class="msg msg--warning">Warning </span>
-                            <span class="msg msg--err">Error </span>
-                            <span class="msg msg--success">Success </span>
-                        </td>
-                    </tr>
-                </table>
-            </li>
+            <table>
+                <tr>
+                    <td>
+                        <span class="sender">{{sender}}:</span>
+                        <span class="timestamp">[{{time}}]</span>
+                        <span class="symbol">$ </span>
+                    </td>
+                    <td>
+                        <span class="msg msg--{{msgMode}}">{{msg}}</span>
+                    </td>
+                </tr>
+            </table>
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>

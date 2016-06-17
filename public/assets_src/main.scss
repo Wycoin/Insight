@@ -16,18 +16,18 @@ body {
 
   li {
     display: block;
-    
+
     margin-bottom: .5em;
     padding: .5em 2em;
-    
+
     table td {
       vertical-align: top;
-      
+
       &:last-child {
         padding-left: 1em;
       }
     }
-    
+
     &:nth-child(even){
       background-color: #181818;
     }

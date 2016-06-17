@@ -4,6 +4,7 @@ package main
 import (
     "github.com/gin-gonic/gin"
     "github.com/gorilla/websocket"
+    "github.com/gin-gonic/contrib/static"
     "net/http"
 	"log"
     "fmt"
@@ -24,6 +25,7 @@ var _run bool
 
 func main() {
     app := gin.Default()
+    app.Use(static.Serve("/", static.LocalFile("./public", true)))
 
     v1 := app.Group("/notifications")
     {
@@ -46,21 +48,10 @@ func main() {
             c.JSON(200, getEvents())
         })
 
-    }
-
-        app.LoadHTMLFiles("public/index.html")
-        app.Static("/assets", "./public/assets")
-
-        app.GET("/", func(c *gin.Context) {
-            c.HTML(200, "index.html", nil)
-        })
-
-        app.GET("/ws", func(c *gin.Context) {
+        v1.GET("/ws", func(c *gin.Context) {
             wshandler(c.Writer, c.Request)
         })
-
-
-
+    }
     app.Run(":2340")
 }
 
@@ -120,6 +111,7 @@ func wshandler(w http.ResponseWriter, r *http.Request) {
 
     for {
         if _run{
+            fmt.Println("sending socket ping")
             b,_ := json.Marshal(to_cast)
             conn.WriteMessage(1,[]byte(b))
             _run = false

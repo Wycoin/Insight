@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass assets_src/main.scss assets/main.css && babel --presets es2015 assets_src/main.js -o assets/main.js",
+    "build:scss": "node-sass assets_src/main.scss assets/main.css",
+    "build:js": "babel --presets es2015 assets_src/main.js -o assets/main.js",
+    "build": "npm run build:scss && npm run build:js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Koen Vendrik <k.vendrik@gmail.com>",
