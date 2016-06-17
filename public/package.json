@@ -1,0 +1,17 @@
+{
+  "name": "insight",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass assets_src/main.scss assets/main.css && babel --presets es2015 assets_src/main.js -o assets/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Koen Vendrik <k.vendrik@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "node-sass": "^3.7.0"
+  }
+}

@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: 'AndaleMono', monospace;
+  color: #fff;
+  background-color: #000;
+  line-height: 1.5em; }
+
+.prompt {
+  margin: 1em 0; }
+  .prompt li {
+    display: block;
+    margin-bottom: .5em;
+    padding: .5em 2em; }
+    .prompt li table td {
+      vertical-align: top; }
+      .prompt li table td:last-child {
+        padding-left: 1em; }
+    .prompt li:nth-child(even) {
+      background-color: #181818; }
+    .prompt li:last-child {
+      margin-bottom: 0; }
+
+.msg.msg--info {
+  color: #53A9D6; }
+
+.msg.msg--warning {
+  color: #F7CF78; }
+
+.msg.msg--err {
+  color: #FC755A; }
+
+.msg.msg--success {
+  color: #4FA65B; }
+
+.symbol {
+  color: #53A9D6; }
+
+.timestamp {
+  color: #53A9D6; }
+
+.sender {
+  color: #53A9D6; }
