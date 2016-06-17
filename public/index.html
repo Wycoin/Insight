@@ -1,0 +1,42 @@
+<html>
+  <head>
+      <title>Logger</title>
+  </head>
+  <body>
+
+      <ul class="prompt js-output"></ul>
+
+    <script class="js-item-template" type="text/x-handlebars-template">
+      <li>
+        <table>
+          <tr>
+            <td>
+                <span class="sender">192.168.2.3:</span>
+                <span class="timestamp">[18-02-2016]</span>
+                <span class="symbol">$ </span>
+            </td>
+            <td>
+                <span class="msg msg--info">Info </span>
+                <span class="msg msg--warning">Warning </span>
+                <span class="msg msg--err">Error </span>
+                <span class="msg msg--success">Success </span>
+            </td>
+          </tr>
+        </table>
+      </li>
+    </script>
+
+    <script>
+        var sockets = {
+            init: function(){
+                var url = 'ws://localhost:2340/notifications/ws';
+                this._io = new WebSocket(url);
+            },
+            _bindEvents: function(){
+
+            }
+        };
+    </script>
+
+  </body>
+</html>
