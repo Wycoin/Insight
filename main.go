@@ -46,19 +46,21 @@ func main() {
             c.JSON(200, getEvents())
         })
 
+    }
+
         app.LoadHTMLFiles("public/index.html")
-        v1.GET("/", func(c *gin.Context) {
+        app.Static("/assets", "./public/assets")
+
+        app.GET("/", func(c *gin.Context) {
             c.HTML(200, "index.html", nil)
         })
 
-        v1.GET("/ws", func(c *gin.Context) {
+        app.GET("/ws", func(c *gin.Context) {
             wshandler(c.Writer, c.Request)
         })
 
-    }
 
-    // serve static files
-    app.StaticFS("/assets", http.Dir("public/assets"))
+
     app.Run(":2340")
 }
 
