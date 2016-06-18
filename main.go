@@ -2,15 +2,16 @@ package main
 
 
 import (
+    "net/http"
+    "log"
+    "fmt"
+    "time"
+    "os"
+    "encoding/json"
     "github.com/gin-gonic/gin"
     "github.com/gorilla/websocket"
     "github.com/gin-gonic/contrib/static"
-    "net/http"
-	"log"
-    "fmt"
-    "time"
     "gopkg.in/mgo.v2"
-    "encoding/json"
 )
 
 type LogEvent struct {
@@ -56,7 +57,7 @@ func main() {
 }
 
 func getEvents() []LogEvent{
-        session, err := mgo.Dial("localhost:27017")
+        session, err := mgo.Dial(os.Getenv("MONGO_URL"))
         if err != nil {
                 panic(err)
         }
@@ -75,7 +76,7 @@ func getEvents() []LogEvent{
 }
 
 func postEvent(source string, event string, status string) LogEvent{
-        session, err := mgo.Dial("localhost:27017")
+        session, err := mgo.Dial(os.Getenv("MONGO_URL"))
         if err != nil {
                 panic(err)
         }
@@ -90,11 +91,7 @@ func postEvent(source string, event string, status string) LogEvent{
         return LogEvent{source,time.Now(), event, status}
 }
 
-
-
 // sockets
-
-
 var wsupgrader = websocket.Upgrader{
     ReadBufferSize:  1024,
     WriteBufferSize: 1024,
@@ -106,8 +103,6 @@ func wshandler(w http.ResponseWriter, r *http.Request) {
         fmt.Println("Failed to set websocket upgrade: %+v", err)
         return
     }
-
-
 
     for {
         if _run{

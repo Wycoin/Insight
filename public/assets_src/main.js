@@ -2,7 +2,7 @@ console.log('init');
 
 class Sockets {
     constructor(listeners){
-        var url = 'ws://localhost:2340/notifications/ws';
+        var url = 'ws://'+location.host+'/notifications/ws';
         this._io = new WebSocket(url);
         this._listeners = listeners;
 
