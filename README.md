@@ -1,5 +1,6 @@
 ```
-npm start # starts on *:9000
+npm install
+npm start
 ```
 
 ```
